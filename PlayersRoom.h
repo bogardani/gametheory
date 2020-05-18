@@ -21,4 +21,6 @@ double GetCoopRatio(struct PlayersRoom* this);
 
 int GetMaxNeighbourCount(struct PlayersRoom* this);
 
+void ResetRoom(struct PlayersRoom* this);
+
 void DestroyPlayersRoom(struct PlayersRoom* this);

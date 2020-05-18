@@ -8,7 +8,7 @@ struct Simulation {
 
 struct Simulation* CreateSimulation(struct PlayersRoom* playersRoom, int simCount);
 
-void RunSimulation(struct Simulation* this);
+void RunSimulation(struct Simulation* this, int runCount);
 
 void PrintResults(struct Simulation* this);
 

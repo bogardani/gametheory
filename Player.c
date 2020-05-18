@@ -27,6 +27,7 @@ struct Player* CreatePlayer(enum Strategy strategy, int initBuffSize) {
 	if (player) {
 		player->_buffSize = initBuffSize;
 		player->Strategy = strategy;
+		player->_defaultStrategy = strategy;
 		player->Neighbours = NULL;
 		player->Neighbours = (struct Player**)malloc(player->_buffSize * sizeof(struct Player*));
 		if (player->Neighbours) {
@@ -76,6 +77,10 @@ void ClearNeighbours(struct Player* this) {
 		_createNeighbours(this);
 	}
 	this->NeighboursLength = 0;
+}
+
+void Reset(struct Player* this) {
+	this->Strategy = this->_defaultStrategy;
 }
 
 void DestroyPlayer(struct Player* this) {

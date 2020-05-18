@@ -24,11 +24,45 @@ struct Simulation* CreateSimulation(struct PlayersRoom* playersRoom, int simCoun
 	return simulation;
 }
 
-void RunSimulation(struct Simulation* this) {
-	for (int i = 0; i < this->_simCount; i++) {
-		Play(this->_playersRoom);
-		this->results[i] = GetCoopRatio(this->_playersRoom);
+void _createResults(struct Simulation* this, double**results, int runCount) {
+	for (int i = 0; i < runCount; i++) {
+		results[i] = (double*)malloc(this->_simCount * sizeof(double));
 	}
+}
+
+void _runSimulation(struct Simulation* this, double** results, int runCount) {
+	for (int k = 0; k < runCount; k++) {
+		ResetRoom(this->_playersRoom);
+		for (int i = 0; i < this->_simCount; i++) {
+			Play(this->_playersRoom);
+			results[k][i] = GetCoopRatio(this->_playersRoom);
+		}
+	}
+	for (int i = 0; i < this->_simCount; i++) {
+		double sum = 0;
+		for (int k = 0; k < runCount; k++) {
+			sum += results[k][i];
+		}
+		this->results[i] = sum / runCount;
+	}
+}
+
+void _deleteResults(double** results, int runCount) {
+	for (int i = 0; i < runCount; i++) {
+		free(results[i]);
+	}
+	free(results);
+}
+
+void RunSimulation(struct Simulation* this, int runCount) {
+	double** results = NULL;
+	results = (double**)malloc(runCount * sizeof(double*));
+	if (results) {
+		_createResults(this, results, runCount);
+		_runSimulation(this, results, runCount);
+	}
+	_deleteResults(results, runCount);
+	ResetRoom(this->_playersRoom);
 }
 
 void PrintResults(struct Simulation* this) {

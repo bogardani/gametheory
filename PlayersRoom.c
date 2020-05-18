@@ -205,6 +205,12 @@ int GetMaxNeighbourCount(struct PlayersRoom* this) {
 	return retVal;
 }
 
+void ResetRoom(struct PlayersRoom* this) {
+	for (int i = 0; i < this->PlayersLength; i++) {
+		Reset(this->Players[i]);
+	}
+}
+
 void DestroyPlayersRoom(struct PlayersRoom *this) {
 	for (int i = 0; i < this->PlayersLength; i++) {
 		DestroyPlayer(this->Players[i]);
