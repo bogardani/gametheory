@@ -1,4 +1,5 @@
-#pragma once
+#ifndef STRATEGY_H
+#define STRATEGY_H
 
 enum Strategy {
 	Coop,
@@ -22,3 +23,5 @@ void ClearNeighbours(struct Player* this);
 void Reset(struct Player* this);
 
 void DestroyPlayer(struct Player* this);
+
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PLAYERS_ROOM_H
+#define PLAYERS_ROOM_H
 
 enum Topology {
 	Mixed,
@@ -24,3 +25,5 @@ int GetMaxNeighbourCount(struct PlayersRoom* this);
 void ResetRoom(struct PlayersRoom* this);
 
 void DestroyPlayersRoom(struct PlayersRoom* this);
+
+#endif

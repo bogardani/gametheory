@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SIMULATION_H
+#define SIMULATION_H
 
 struct Simulation {
 	struct PlayersRoom* _playersRoom;
@@ -15,3 +16,5 @@ void PrintResults(struct Simulation* this);
 void PrintResultsToFile(struct Simulation* this, char* fileName);
 
 void DestroySimulation(struct Simulation* this);
+
+#endif

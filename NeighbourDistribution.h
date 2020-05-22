@@ -1,4 +1,5 @@
-#pragma once
+#ifndef NEIGHBOUR_DISTRIBUTION_H
+#define NEIGHBOUR_DISTRIBUTION_H
 
 struct NeighbourDistribution {
 	int* Distributions;
@@ -12,3 +13,5 @@ void PrintNeighbourDistribution(struct NeighbourDistribution* this);
 void PrintNeighbourDistributionToFile(struct NeighbourDistribution* this, char* fileName);
 
 void DestroyNeighbourDistribution(struct NeighbourDistribution* this);
+
+#endif

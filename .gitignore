@@ -1,0 +1,5 @@
+bin
+*.cbp
+*.depend
+*.o
+*.txt
